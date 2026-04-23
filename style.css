@@ -1,0 +1,306 @@
+@import url(./styles/fonts.css);
+@import url(./styles/standard.css);
+@import url(./styles/root.css);
+@import url(./styles/component.css);
+@import url(./styles/basket.css);
+@import url(./styles/responsive.css);
+
+/* Common Styles*/
+.dNone {
+  display: none;
+}
+/* Common Styles END*/
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  width: 100%;
+
+  background-color: var(--color-orange-dark);
+}
+
+.header__imgContainer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 2rem;
+
+  max-width: var(--content-lock);
+  width: 100%;
+}
+
+.header__img {
+  height: 35px;
+}
+/* Header Styles END */
+
+/* Main Styles*/
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex: 1;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5rem;
+
+  width: 100%;
+}
+
+.hero__imageContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.hero__image {
+  max-width: var(--content-lock);
+  width: 100%;
+  height: 500px;
+
+  object-position: center;
+  object-fit: cover;
+}
+
+.hero__logo {
+  position: absolute;
+  top: 500px;
+  left: max(50% - 100px, 2rem);
+
+  height: 200px;
+
+  border-radius: 50%;
+  border: 13px solid var(--color-orange-bright);
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.hero__titleInnerContainer {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.hero__reviewContainer {
+  display: flex;
+  align-items: center;
+
+  padding: 2px 8px;
+  gap: 0.25rem;
+
+  height: 2rem;
+
+  background-color: rgba(250, 202, 172, 1);
+
+  border-radius: 4px;
+}
+
+.hero__reviewContainer > img {
+  height: 1rem;
+}
+
+.hero__reviewRating {
+  font-weight: 700;
+}
+
+.hero__subtitle {
+  font-weight: 700;
+  font-size: 1.5rem;
+
+  text-align: center;
+}
+/* Hero END*/
+
+/* Content */
+/* Container */
+.content {
+  display: flex;
+  justify-content: center;
+
+  max-width: var(--content-lock);
+  width: 100%;
+}
+
+.content__catWrapper {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+
+.content__basketWrapper {
+  position: relative;
+
+  display: flex;
+  width: 350px;
+}
+/* Content Container END */
+
+/* Category */
+.category {
+  display: flex;
+  flex-direction: column;
+}
+
+.category__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 5rem;
+
+  height: 80px;
+  width: 100%;
+
+  color: white;
+  background-color: var(--color-orange-dark);
+}
+
+.category__header::before {
+  position: absolute;
+  top: 0;
+  right: 100%;
+
+  content: "";
+
+  height: 100%;
+  width: 100vw;
+
+  background-color: var(--color-orange-dark);
+}
+
+.category__header::after {
+  position: absolute;
+  top: 0;
+  left: 100%;
+
+  content: "";
+
+  height: 100%;
+  width: 100vw;
+
+  background-color: var(--color-orange-dark);
+}
+
+.category__main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+
+  gap: 1rem;
+}
+/* Category END */
+
+/* Dish */
+.dish {
+  display: flex;
+
+  padding: 0.5rem;
+  gap: 2rem;
+
+  background-color: var(--color-orange-bright);
+  border-radius: 10px;
+}
+
+.dish__image {
+  height: 120px;
+  width: 200px;
+
+  flex-shrink: 0;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+}
+
+.dish__descriptionContainer {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 2rem;
+}
+
+.dish__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dish__price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dish__price > p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+/* Dish END */
+/* Content END */
+/* Main Styles END*/
+
+/* Footer Styles */
+.footer {
+  display: flex;
+
+  height: 100px;
+
+  background-color: var(--color-orange-dark);
+
+  color: white;
+}
+
+.footer__innerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5rem;
+
+  width: 100%;
+}
+
+.footer__copyright {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+.footer__copyright > span {
+  display: flex;
+}
+
+.footer__navList {
+  display: flex;
+
+  gap: 5rem;
+}
+
+.footer__navList a {
+  color: white;
+}
+/* Footer Styles END */

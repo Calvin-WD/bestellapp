@@ -1,0 +1,67 @@
+:root {
+  /* Color */
+  --color-orange-dark: rgba(231, 108, 31, 1);
+  --color-orange-bright: rgba(253, 234, 220, 1);
+  --color-black: rgba(54, 53, 52, 1);
+  /* Color End */
+
+  /* Spacing */
+  --content-lock: 1440px;
+  /* Spacing END */
+}
+
+/* Global Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-orange-dark);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-orange-bright);
+  border: 2px solid var(--color-orange-dark);
+}
+
+html {
+  font-family: "Palanquin";
+  color: var(--color-black);
+}
+
+html ul {
+  list-style-type: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100dvh;
+
+  overflow-x: hidden;
+}
+
+h1 {
+  color: var(--color-orange-dark);
+
+  font-family: "Palanquin Dark";
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h1 > span {
+  color: var(--color-black);
+}
+
+h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+/* Global Styles END*/

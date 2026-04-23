@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bestell App</title>
+
+    <link
+      rel="shortcut icon"
+      href="./assets/icon/header-logo.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./script.js"></script>
+  </head>
+  <body onload="init()">
+    <header class="header">
+      <div class="header__imgContainer">
+        <img
+          src="./assets/icon/header-logo.svg"
+          alt="Bestelllogo"
+          class="header__img"
+        />
+        <img
+          src="./assets/icon/header-menu.svg"
+          alt="Burgermenu ist ein reiner Platzhalter"
+          class="header__img"
+        />
+      </div>
+    </header>
+    <main class="main">
+      <div>
+        <img
+          class="hero__logo"
+          src="./assets/img/hero-logo.png"
+          alt="Burgerhouse Logo"
+        />
+      </div>
+      <section class="hero">
+        <div class="hero__imageContainer">
+          <img
+            class="hero__image"
+            src="./assets/img/hero-image.png"
+            alt="Burger und Pizza auf einem Tisch"
+          />
+        </div>
+        <div class="hero__title">
+          <div class="hero__titleInnerContainer">
+            <h1>Burger<span>House</span></h1>
+            <div class="hero__reviewContainer">
+              <img
+                src="./assets/icon/star-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p class="hero__reviewRating">4,1</p>
+              <p>(317)</p>
+            </div>
+          </div>
+          <p class="hero__subtitle">
+            Das beste an Burger, Pizza und Salaten, alle an einem Ort.
+          </p>
+        </div>
+      </section>
+      <section class="content">
+        <section id="catWrapper-id" class="content__catWrapper"></section>
+        <aside class="content__basketWrapper">
+          <article class="basket">
+            <h2>Dein Warenkorb</h2>
+            <section id="basketDishes-id">
+              <p>Noch nichts im Warenkorb.</p>
+              <p>Suche Die etwas leckeres aus!</p>
+            </section>
+            <section>
+              <img
+                src="./assets/icon/shopping_cart.svg"
+                alt="Ein Warenkorb"
+                class="basket__image"
+              />
+            </section>
+          </article>
+        </aside>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__innerContainer">
+        <p class="footer__copyright">
+          <span
+            ><img
+              src="./assets/icon/copyright-icon.svg"
+              alt=""
+              aria-hidden="true" /></span
+          >2026 BurgerHouse
+        </p>
+        <nav>
+          <ul class="footer__navList">
+            <li>
+              <a href="#">Impressum</a>
+            </li>
+            <li>
+              <a href="#">Cookie Präferenz</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

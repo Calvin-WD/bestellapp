@@ -1,0 +1,20 @@
+.button {
+  padding: 5px 8px;
+
+  border: none;
+  border-radius: 20px;
+
+  background-color: white;
+
+  color: rgba(54, 53, 52, 1);
+  font-size:  1rem;
+  font-weight: 600;
+
+  text-wrap: nowrap;
+}
+
+.button:hover {
+  cursor: pointer;
+
+  color: var(--color-main-dark);
+}

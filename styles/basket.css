@@ -1,0 +1,27 @@
+.basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  position: sticky;
+  top: calc((100dvh - 800px) / 2);
+
+  height: 700px;
+  width: 350px;
+
+  padding: 2rem 1rem;
+  gap: 5rem;
+
+  color: var(--color-orange-bright);
+  background-color: var(--color-black);
+  
+  border-radius: 30px 0 0 30px;
+}
+
+.basket > h2 {
+  color: var(--color-orange-bright);
+}
+
+.basket__image {
+  height: 120px;
+}
