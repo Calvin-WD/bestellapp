@@ -9,6 +9,10 @@
 .dNone {
   display: none;
 }
+
+.scroll {
+  overflow-y: scroll;
+}
 /* Common Styles END*/
 
 /* Header Styles */

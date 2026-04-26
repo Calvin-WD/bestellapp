@@ -24,3 +24,55 @@ export function getDishTemplate(dish) {
       </div>
     </article>`;
 }
+
+export function getBasketTemplate(basketDishesHtml, basketPriceHtml) {
+  return `<article class="basket">
+        <h2>Dein Warenkorb</h2>
+        <section id="basketDishes-id" class="basket__dishesContainer">
+          ${basketDishesHtml}
+        </section>
+        <section id="basketPrice-id" class="basket__priceContainer">
+         ${basketPriceHtml}
+         </section>
+      </article>`;
+  }
+
+export function getBasketDishEmptyTemplate() {
+  return `<p>Noch nichts im Warenkorb.</p>
+        <p>Suche Die etwas leckeres aus!</p>`;
+}
+
+export function getBasketDishTemplate(basketDish) {
+  return `<div class="basket__dish">
+            <p>${basketDish.name}</p>
+            <div class="basket__dishPriceContainter">
+              <p>Zahl</p>
+              <p>Button</p>
+            </div>
+          </div>`;
+}
+
+export function getBasketPriceEmptyTemplate() {
+  return `<img
+          src="./assets/icon/shopping_cart.svg"
+          alt="Ein Warenkorb"
+          class="basket__image"
+        />`;
+}
+
+export function getBasketPriceTemplate(basket) {
+  return `<table class="basket__table">
+            <tr>
+              <td>Subtotal</td>
+              <td>55</td>
+            </tr>
+            <tr>
+              <td>Delivery Fee</td>
+              <td>4,99</td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <th>59,99</th>
+            </tr>
+          </table>`;
+}
