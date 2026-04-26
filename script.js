@@ -1,6 +1,7 @@
 /** import the javascript modules*/
-import { renderCategories } from "./scripts/render.js";
+import { renderCategories, renderBasket } from "./scripts/render.js";
 import { addToBasket, getDishFromDatabase } from "./scripts/basket.js";
+import {saveToLocalStorage, getFromLocalStorage} from "../scripts/saving.js";
 import { menu, basket } from "./scripts/db.js";
 
 const BASKET = "Basket";
@@ -11,15 +12,7 @@ function init() {
     basket.dishes = currentBasketDishes;
   }
   renderCategories();
-}
-
-function saveToLocalStorage(keyString, value) {
-  localStorage.setItem(keyString, JSON.stringify(value));
-}
-
-function getFromLocalStorage(keyString) {
-  const data = JSON.parse(localStorage.getItem(keyString));
-  return data;
+  renderBasket(basket);
 }
 
 window.init = init;
