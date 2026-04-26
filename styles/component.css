@@ -13,8 +13,12 @@
   text-wrap: nowrap;
 }
 
+.button--added {
+  color: var(--color-orange-dark);
+}
+
 .button:hover {
   cursor: pointer;
 
-  color: var(--color-main-dark);
+  color: var(--color-orange-dark);
 }
