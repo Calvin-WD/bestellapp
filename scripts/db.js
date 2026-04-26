@@ -153,6 +153,9 @@ export const menu = {
 
 export let basket = {
   dishes: [],
-  subTotal: 2,
-  fee: 4.99,
+  summery: {
+    subTotal: 0,
+    total: 0,
+    fee: 4.99,
+  },
 }
