@@ -46,8 +46,8 @@ export function getBasketDishTemplate(basketDish) {
   return `<div class="basket__dish">
             <p>${basketDish.name}</p>
             <div class="basket__dishPriceContainter">
-              <p>Zahl</p>
-              <p>Button</p>
+              <p>${basketDish.amount}</p>
+              <p>${basketDish.price}€</p>
             </div>
           </div>`;
 }
@@ -64,15 +64,15 @@ export function getBasketPriceTemplate(basket) {
   return `<table class="basket__table">
             <tr>
               <td>Subtotal</td>
-              <td>55</td>
+              <td>${basket.summery.subTotal}</td>
             </tr>
             <tr>
               <td>Delivery Fee</td>
-              <td>4,99</td>
+              <td>${basket.summery.fee}</td>
             </tr>
             <tr>
               <th>Total</th>
-              <th>59,99</th>
+              <th>${basket.summery.total}</th>
             </tr>
           </table>`;
 }
