@@ -19,7 +19,7 @@ export function getDishTemplate(dish) {
           </div>
           <div class="dish__price">
             <p>${dish.price} €</p>
-            <button type="button" class="button" onclick="addToBasket(${dish.id})">Hinzufügen</button>
+            <button id="buttonAddToBasket-id${dish.id}" type="button" class="button" onclick="addToBasket(${dish.id}, this)">Hinzufügen</button>
           </div>
       </div>
     </article>`;
