@@ -62,11 +62,3 @@ export function changeButtonState(button) {
   button.classList.add('button--added');
   button.disabled = true;
 }
-
-// function addDishToBasketUi(basketDishesRef, dish) {
-// if (basket.dishes.length == 0) {
-//     basketDishesRef.innerHTML = getBasketDishTemplate(dish);
-//   } else if (dish.amount < 1) {
-//     basketDishesRef.innerHTML += getBasketDishTemplate(dish);
-//   }
-// }

@@ -47,6 +47,7 @@
   background-color: var(--color-orange-bright);
 
   color: var(--color-black);
+  font-size: 1.25rem;
   font-weight: 700;
 
   border-radius: 10px;
@@ -57,9 +58,27 @@
   justify-content: space-between;
 }
 
+.basket__buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.25rem;
+}
+
+.basket__buttonContainer > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  line-height: 1;
+}
+
 .basket__priceContainer {
   display: flex;
-  /* justify-content: center; */
 
   width: 100%;
 
