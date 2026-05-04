@@ -9,8 +9,8 @@ import {
   getDishTemplate,
 } from "../scripts/template.js";
 
-import { menu } from "../scripts/db.js";
-import { changeButtonState } from "./basket.js";
+import { switchButton, checkIfDishIsInBasket, basket } from "./basket.js";
+import { menu } from "./db.js";
 
 export function renderCategories() {
   const catWrapperRef = document.getElementById("catWrapper-id");
@@ -21,11 +21,17 @@ export function renderBasket(basket) {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
   basketWrapperRef.innerHTML = getBasketWrapperHtml(basket, basket.dishes);
-}
 
-export function renderBasketSummery(basket) {
-  const basketSummeryRef = document.getElementById("basketPrice-id");
-  basketSummeryRef.innerHTML = getBasketPriceHtml(basket);
+  for (
+    let indexBasketDish = 0;
+    indexBasketDish < basket.dishes.length;
+    indexBasketDish++
+  ) {
+    const dish = basket.dishes[indexBasketDish];
+    if (dish.amount > 1) {
+      switchButton(dish);
+    }
+  }
 }
 
 function getCatWrapperHtml() {
@@ -48,16 +54,29 @@ function getDishHtml(dishes) {
   let dishesHtml = "";
   for (let indexDishes = 0; indexDishes < dishes.length; indexDishes++) {
     const currentDish = dishes[indexDishes];
+    let isInBasket = checkIfDishIsInBasket(currentDish);
 
-    dishesHtml += getDishTemplate(currentDish);
+      const buttonText = isInBasket ? "Im Warenkorb" : "Hinzufügen";
+      const buttonClass = isInBasket ? " button--added" : "";
+      const buttonState = isInBasket ? "disabled" : "";
+
+    dishesHtml += getDishTemplate(
+      currentDish,
+      buttonText,
+      buttonClass,
+      buttonState,
+    );
   }
   return dishesHtml;
 }
 
 function getBasketWrapperHtml(basket, basketDishes) {
+  const scrollClass = (basket.dishes.length > 3) ? "oFlowYscroll":"";
+
   return getBasketTemplate(
     getBasketDishesHtml(basketDishes),
     getBasketPriceHtml(basket),
+    scrollClass
   );
 }
 
@@ -74,9 +93,6 @@ function getBasketDishesHtml(basketDishes) {
     ) {
       const currentBasketDish = basketDishes[indexBasketDish];
       basketDishesFullHtml += getBasketDishTemplate(currentBasketDish);
-      if (currentBasketDish.amount >= 1) {
-        changeButtonState(document.getElementById("buttonAddToBasket-id" + currentBasketDish.id));
-      }
     }
     return basketDishesFullHtml;
   }
