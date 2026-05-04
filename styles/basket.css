@@ -36,6 +36,12 @@
   max-height: 350px;
 }
 
+.basket_emptyDishesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .basket__dish {
   display: flex;
   flex-direction: column;

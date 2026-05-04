@@ -45,8 +45,10 @@ export function getBasketTemplate(basketDishesHtml, basketPriceHtml, scrollClass
 }
 
 export function getBasketDishEmptyTemplate() {
-  return `<p>Noch nichts im Warenkorb.</p>
-        <p>Suche Die etwas leckeres aus!</p>`;
+  return `<div class="basket_emptyDishesContainer">
+            <p>Noch nichts im Warenkorb.</p>
+            <p>Suche Die etwas leckeres aus!</p>
+          <d/iv>`;
 }
 
 export function getBasketDishTemplate(basketDish) {
