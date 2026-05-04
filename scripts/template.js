@@ -48,7 +48,7 @@ export function getBasketDishEmptyTemplate() {
   return `<div class="basket_emptyDishesContainer">
             <p>Noch nichts im Warenkorb.</p>
             <p>Suche Die etwas leckeres aus!</p>
-          <d/iv>`;
+          </div>`;
 }
 
 export function getBasketDishTemplate(basketDish) {
