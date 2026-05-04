@@ -10,7 +10,7 @@
   display: none;
 }
 
-.scroll {
+.oFlowYscroll {
   overflow-y: scroll;
 }
 /* Common Styles END*/
@@ -256,6 +256,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .dish__price > p {
