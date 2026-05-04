@@ -25,13 +25,26 @@ export let basket = {
 export function addToBasket(dishId, button, dbAction) {
   const basketDishesRef = document.getElementById("basketDishes-id");
   const dish = getDishFromDatabase(dishId);
+  const deleteButtonUpper = dish.amount <= 1 ? "dNone" : "";
+  const deleteButtonLower = dish.amount > 1 ? "dNone" : "";
+  const quantitySubButton = dish.amount <= 1 ? "dNone" : "";
 
   updateBasket(dish, dishId, dbAction);
 
   if (basket.dishes.length <= 1) {
-    basketDishesRef.innerHTML = getBasketDishTemplate(dish);
+    basketDishesRef.innerHTML = getBasketDishTemplate(
+      dish,
+      deleteButtonUpper,
+      deleteButtonLower,
+      quantitySubButton,
+    );
   } else {
-    basketDishesRef.innerHTML += getBasketDishTemplate(dish);
+    basketDishesRef.innerHTML += getBasketDishTemplate(
+      dish,
+      deleteButtonUpper,
+      deleteButtonLower,
+      quantitySubButton,
+    );
   }
 
   setScrollIfNeed(basket.dishes);
@@ -57,7 +70,6 @@ export function changeBasketDishAmount(dishId, dbAction) {
   }
 }
 
-
 export function changeButtonState(dish) {
   const button = document.getElementById("buttonAddToBasket-id" + dish.id);
   const menuDish = getDishFromDatabase(dish.id);
@@ -74,13 +86,23 @@ export function changeButtonState(dish) {
 }
 
 export function switchButton(dish) {
-  const delButton = document.getElementById("delButton-" + dish.id);
+  const delButtons = document.querySelectorAll(".js-delButton-" + dish.id);
   const subButton = document.getElementById("subButton-" + dish.id);
 
-  if (delButton != null && subButton != null) {
-    delButton.classList.toggle("dNone");
-    subButton.classList.toggle("dNone");
+  if (delButtons != null && subButton != null) {
+
+    for (let indexButton = 0; indexButton < delButtons.length; indexButton++) {
+      const button = delButtons[indexButton];
+      button.classList.toggle("dNone");
+    }
+    if (dish.amount <= 1) {
+      subButton.classList.add("dNone");
+    } else {
+      subButton.classList.remove("dNone");
+    }
   }
+  console.log(delButtons);
+  
 }
 
 export function checkIfDishIsInBasket(dish) {
@@ -89,13 +111,12 @@ export function checkIfDishIsInBasket(dish) {
 }
 
 export function setScrollIfNeed(dishes) {
-  const basketDishContainerRef = document.getElementById('basketDishes-id');
+  const basketDishContainerRef = document.getElementById("basketDishes-id");
   if (dishes.length > 3) {
     basketDishContainerRef.classList.add("oFlowYscroll");
   } else {
     basketDishContainerRef.classList.remove("oFlowYscroll");
   }
-
 }
 
 /** find dish by dishId using Arrow-function 'find()'
@@ -216,8 +237,7 @@ function addBasketDishAmount(dish) {
 function subBasketDishAmount(dish) {
   dish.amount--;
 
-  if (dish.amount == 1) {
+  if (dish.amount <= 1) {
     switchButton(dish);
   }
 }
-

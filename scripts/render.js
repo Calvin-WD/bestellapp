@@ -9,7 +9,7 @@ import {
   getDishTemplate,
 } from "../scripts/template.js";
 
-import { switchButton, checkIfDishIsInBasket, basket } from "./basket.js";
+import { checkIfDishIsInBasket, basket } from "./basket.js";
 import { menu } from "./db.js";
 
 export function renderCategories() {
@@ -21,17 +21,6 @@ export function renderBasket(basket) {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
   basketWrapperRef.innerHTML = getBasketWrapperHtml(basket, basket.dishes);
-
-  for (
-    let indexBasketDish = 0;
-    indexBasketDish < basket.dishes.length;
-    indexBasketDish++
-  ) {
-    const dish = basket.dishes[indexBasketDish];
-    if (dish.amount > 1) {
-      switchButton(dish);
-    }
-  }
 }
 
 function getCatWrapperHtml() {
@@ -56,9 +45,9 @@ function getDishHtml(dishes) {
     const currentDish = dishes[indexDishes];
     let isInBasket = checkIfDishIsInBasket(currentDish);
 
-      const buttonText = isInBasket ? "Im Warenkorb" : "Hinzufügen";
-      const buttonClass = isInBasket ? " button--added" : "";
-      const buttonState = isInBasket ? "disabled" : "";
+    const buttonText = isInBasket ? "Im Warenkorb" : "Hinzufügen";
+    const buttonClass = isInBasket ? " button--added" : "";
+    const buttonState = isInBasket ? "disabled" : "";
 
     dishesHtml += getDishTemplate(
       currentDish,
@@ -71,12 +60,12 @@ function getDishHtml(dishes) {
 }
 
 function getBasketWrapperHtml(basket, basketDishes) {
-  const scrollClass = (basket.dishes.length > 3) ? "oFlowYscroll":"";
+  const scrollClass = basket.dishes.length > 3 ? "oFlowYscroll" : "";
 
   return getBasketTemplate(
     getBasketDishesHtml(basketDishes),
     getBasketPriceHtml(basket),
-    scrollClass
+    scrollClass,
   );
 }
 
@@ -92,7 +81,15 @@ function getBasketDishesHtml(basketDishes) {
       indexBasketDish++
     ) {
       const currentBasketDish = basketDishes[indexBasketDish];
-      basketDishesFullHtml += getBasketDishTemplate(currentBasketDish);
+      const deleteButtonUpper = currentBasketDish.amount <= 1 ? "dNone" : "";
+      const deleteButtonLower = currentBasketDish.amount > 1 ? "dNone" : "";
+      const quantitySubButton = currentBasketDish.amount <= 1 ? "dNone" : "";
+      basketDishesFullHtml += getBasketDishTemplate(
+        currentBasketDish,
+        deleteButtonUpper,
+        deleteButtonLower,
+        quantitySubButton
+      );
     }
     return basketDishesFullHtml;
   }
