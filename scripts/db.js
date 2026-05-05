@@ -75,7 +75,7 @@ export const menu = {
       ],
     },
     {
-      name: "Salat",
+      name: "Salad",
       dishes: [
         {
           name: "Caesar Salad",
