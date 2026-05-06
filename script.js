@@ -1,7 +1,18 @@
 import { getMenu } from "./scripts/db.js";
-import { addToBasket, getBasket } from "./scripts/basket.js";
+import {
+  addDishAmount,
+  addToBasket,
+  getBasket,
+  removeFromBasket,
+  subDishAmount,
+} from "./scripts/basket.js";
 import { renderBasket, renderCategories } from "./scripts/render.js";
-import { BASKET_ADD_ITEM } from "./scripts/constants.js";
+import {
+  BASKET_ADD_AMOUNT,
+  BASKET_ADD_ITEM,
+  BASKET_REMOVE_ITEM,
+  BASKET_SUB_AMOUNT,
+} from "./scripts/constants.js";
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -20,7 +31,7 @@ function setEventListeners() {
 }
 
 function handleClick(event) {
-  const target = event.target;
+  const target = event.target.closest("[data-action]");
 
   if (target == null) {
     return;
@@ -32,6 +43,16 @@ function handleClick(event) {
   if (action === BASKET_ADD_ITEM) {
     addToBasket(Number(dishId));
     renderCategories(MENU);
+    renderBasket(basket);
+  } else if (action === BASKET_REMOVE_ITEM) {
+    removeFromBasket(Number(dishId));
+    renderCategories(MENU);
+    renderBasket(basket);
+  } else if (action === BASKET_ADD_AMOUNT) {
+    addDishAmount(Number(dishId));
+    renderBasket(basket);
+  } else if (action === BASKET_SUB_AMOUNT) {
+    subDishAmount(Number(dishId));
     renderBasket(basket);
   }
 }
