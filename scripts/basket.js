@@ -1,6 +1,14 @@
+import { BASKET } from "./constants.js";
+import { getFromLocalStorage } from "./store.js";
+
 const DELIVERY_FEE = 499;
 
+const storedBasket = getFromLocalStorage(BASKET);
 let basket = {};
+
+if (storedBasket) {
+  basket = storedBasket;
+}
 
 export function getBasket() {
   return basket;
