@@ -2,15 +2,23 @@ import { getMenu } from "./scripts/db.js";
 import {
   addDishAmount,
   addToBasket,
+  clearBasket,
   getBasket,
+  getBasketLength,
   removeFromBasket,
   subDishAmount,
 } from "./scripts/basket.js";
-import { renderBasket, renderCategories } from "./scripts/render.js";
+import {
+  closeBasket,
+  openBasket,
+  renderBasket,
+  renderCategories,
+} from "./scripts/render.js";
 import {
   BASKET,
   BASKET_ADD_AMOUNT,
   BASKET_ADD_ITEM,
+  BASKET_BUY_NOW,
   BASKET_REMOVE_ITEM,
   BASKET_SUB_AMOUNT,
 } from "./scripts/constants.js";
@@ -47,6 +55,9 @@ function handleClick(event) {
     saveToLocalStorage(BASKET, basket);
     renderCategories(MENU);
     renderBasket(basket);
+    if (getBasketLength() <= 1){
+      openBasket();
+    }
   } else if (action === BASKET_REMOVE_ITEM) {
     removeFromBasket(Number(dishId));
     saveToLocalStorage(BASKET, basket);
@@ -60,5 +71,10 @@ function handleClick(event) {
     subDishAmount(Number(dishId));
     saveToLocalStorage(BASKET, basket);
     renderBasket(basket);
+  } else if (action === BASKET_BUY_NOW) {
+    clearBasket();
+    saveToLocalStorage(BASKET, basket);
+    renderCategories(MENU);
+    renderBasket();
   }
 }

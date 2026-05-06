@@ -5,16 +5,6 @@
 @import url(./styles/basket.css);
 @import url(./styles/responsive.css);
 
-/* Common Styles*/
-.dNone {
-  display: none;
-}
-
-.oFlowYscroll {
-  overflow-y: scroll;
-}
-/* Common Styles END*/
-
 /* Header Styles */
 .header {
   display: flex;
@@ -310,3 +300,14 @@
   color: white;
 }
 /* Footer Styles END */
+
+/* Common Styles*/
+.dNone {
+  display: none;
+}
+
+.oFlowYscroll {
+  overflow-y: scroll;
+}
+/* Common Styles END*/
+

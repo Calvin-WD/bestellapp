@@ -1,4 +1,11 @@
-import { calculateBasketSubTotal, calculateBasketTotal, getBasketAsArray, isBasketEmpty, isDishInBasket } from "./basket.js";
+import {
+  calculateBasketSubTotal,
+  calculateBasketTotal,
+  getBasketAsArray,
+  getBasketLength,
+  isBasketEmpty,
+  isDishInBasket,
+} from "./basket.js";
 import { getDishById } from "./db.js";
 import {
   getCategoryTemplate,
@@ -33,6 +40,28 @@ function getCatWrapperHtml(menu) {
   return catWrapperHtmlString;
 }
 
+export function renderBasket(basket) {
+  const basketWrapperRef = document.getElementById("basketWrapper-id");
+
+  basketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
+
+  if (isBasketEmpty()) {
+    closeBasket();
+  }
+}
+
+export function openBasket() {
+  const basketWrapperRef = document.getElementById("basketWrapper-id");
+
+  basketWrapperRef.classList.remove("dNone");
+}
+
+export function closeBasket() {
+  const basketWrapperRef = document.getElementById("basketWrapper-id");
+
+  basketWrapperRef.classList.add("dNone");
+}
+
 /** Generate the html string for an array of dishes.
  * computing dynamic button states based on the current basket.
  */
@@ -57,16 +86,10 @@ function getDishesHtml(dishes) {
   return dishesHtml;
 }
 
-export function renderBasket(basket) {
-  const basketWrapperRef = document.getElementById("basketWrapper-id");
-
-  basketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
-}
-
 function getBasketWrapperHtml(basket) {
-  const scrollClass = Object.keys(basket).length > 3 ? "oFlowYscroll" : "";
+  const scrollClass = getBasketLength() > 3 ? "oFlowYscroll" : "";
   const basketTotal = calculateBasketTotal();
-  const buyButtonClassDnone = isBasketEmpty() ? " dNone":"";
+  const buyButtonClassDnone = isBasketEmpty() ? " dNone" : "";
 
   return getBasketTemplate(
     basketTotal,
@@ -82,7 +105,7 @@ function getBasketWrapperHtml(basket) {
  */
 function getBasketDishesHtml(basket) {
   let basketDishesFullHtml = "";
-  
+
   if (isBasketEmpty()) {
     return getBasketDishEmptyTemplate();
   } else {

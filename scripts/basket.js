@@ -21,6 +21,15 @@ export function removeFromBasket(dishId) {
   delete basket[dishId];
 }
 
+export function clearBasket() {
+  const basketArray = getBasketAsArray();
+
+  for (let indexBasket = 0; indexBasket < basketArray.length; indexBasket++) {
+    const dishId = basketArray[indexBasket][0];
+    removeFromBasket(dishId);
+  }
+}
+
 export function addDishAmount(dishId) {
   basket[dishId]++;
 }
@@ -50,19 +59,22 @@ export function getBasketAsArray() {
   return Object.entries(basket);
 }
 
+export function getBasketLength() {
+  return Object.keys(basket).length;
+}
+
 export function isDishInBasket(dishId) {
   let isInBasket = Object.hasOwn(basket, dishId);
   return isInBasket;
 }
 
 export function isBasketEmpty() {
-  if (Object.keys(basket).length === 0) {
+  if (getBasketLength() === 0) {
     return true;
   } else {
     return false;
   }
 }
-
 
 function calculateDishTotalPrice(dishId, dishAmount) {
   const dishPrice = getDishPriceById(dishId);
