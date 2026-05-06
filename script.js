@@ -1,13 +1,16 @@
-import { menu } from "./scripts/db.js";
+import { getMenu } from "./scripts/db.js";
 import { addToBasket, getBasket } from "./scripts/basket.js";
 import { renderBasket, renderCategories } from "./scripts/render.js";
 import { BASKET_ADD_ITEM } from "./scripts/constants.js";
 
 document.addEventListener("DOMContentLoaded", init);
 
+const MENU = getMenu();
+let basket = getBasket();
+
 function init() {
-  renderCategories(menu);
-  renderBasket(getBasket());
+  renderCategories(MENU);
+  renderBasket(basket);
 
   setEventListeners();
 }
@@ -28,6 +31,7 @@ function handleClick(event) {
 
   if (action === BASKET_ADD_ITEM) {
     addToBasket(Number(dishId));
-    renderBasket(getBasket());
+    renderCategories(MENU);
+    renderBasket(basket);
   }
 }

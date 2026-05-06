@@ -1,4 +1,4 @@
-export const menu = {
+export const MENU = {
   categories: [
     {
       name: "Burger & Sandwiches",
@@ -144,10 +144,14 @@ export const menu = {
   ],
 };
 
+export function getMenu() {
+  return MENU;
+}
+
 export function getDishById(dishId) {
   let dish = {};
-  for (let indexCat = 0; indexCat < menu.categories.length; indexCat++) {
-    const currentCat = menu.categories[indexCat];
+  for (let indexCat = 0; indexCat < MENU.categories.length; indexCat++) {
+    const currentCat = MENU.categories[indexCat];
     dish = currentCat.dishes.find((dish) => dish.id === Number(dishId));
 
     if (dish != null) {

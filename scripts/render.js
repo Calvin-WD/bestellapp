@@ -1,3 +1,4 @@
+import { isDishInBasket } from "./basket.js";
 import { getDishById } from "./db.js";
 import {
   getCategoryTemplate,
@@ -39,8 +40,8 @@ function getDishesHtml(dishes) {
   let dishesHtml = "";
   for (let indexDishes = 0; indexDishes < dishes.length; indexDishes++) {
     const currentDish = dishes[indexDishes];
-    let isInBasket = false;
-    // let isInBasket = checkIfDishIsInBasket(currentDish);
+    // let isInBasket = false;
+    let isInBasket = isDishInBasket(currentDish.id);
 
     const buttonText = isInBasket ? "Added" : "Add to basket";
     const buttonClass = isInBasket ? " button--added" : "";
@@ -73,6 +74,9 @@ function getBasketWrapperHtml(basket) {
   );
 }
 
+/** Generate the html string for an array of dishes for the basket.
+ * computing dynamic button states based on the current basket.
+ */
 function getBasketDishesHtml(basket) {
   let basketDishesFullHtml = "";
   const basketArray = Object.entries(basket);
@@ -102,6 +106,7 @@ function getBasketDishesHtml(basket) {
   }
 }
 
+/** returns the basket price html string whether basket its empty or not */
 function getBasketPriceHtml(basket) {
   if (Object.keys(basket).length === 0) {
     return getBasketPriceEmptyTemplate();
@@ -109,7 +114,7 @@ function getBasketPriceHtml(basket) {
     return getBasketPriceTemplate(basket);
   }
 }
-
+/** create an basket dish object with the information what the basket needs */
 function createBaskteDish(dish, dishAmount) {
   let basketDish = {
     name: dish.name,
