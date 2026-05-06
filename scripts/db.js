@@ -159,3 +159,8 @@ export function getDishById(dishId) {
     }
   }
 }
+
+export function getDishPriceById(dishId) {
+  let dish = getDishById(dishId);
+  return dish.price;
+}

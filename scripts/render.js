@@ -1,4 +1,4 @@
-import { isDishInBasket } from "./basket.js";
+import { calculateBasketSubTotal, calculateBasketTotal, getBasketAsArray, isBasketEmpty, isDishInBasket } from "./basket.js";
 import { getDishById } from "./db.js";
 import {
   getCategoryTemplate,
@@ -65,12 +65,15 @@ export function renderBasket(basket) {
 
 function getBasketWrapperHtml(basket) {
   const scrollClass = Object.keys(basket).length > 3 ? "oFlowYscroll" : "";
+  const basketTotal = calculateBasketTotal();
+  const buyButtonClassDnone = isBasketEmpty() ? " dNone":"";
 
   return getBasketTemplate(
-    basket,
+    basketTotal,
     getBasketDishesHtml(basket),
     getBasketPriceHtml(basket),
     scrollClass,
+    buyButtonClassDnone,
   );
 }
 
@@ -79,11 +82,11 @@ function getBasketWrapperHtml(basket) {
  */
 function getBasketDishesHtml(basket) {
   let basketDishesFullHtml = "";
-  const basketArray = Object.entries(basket);
-
-  if (basketArray.length === 0) {
+  
+  if (isBasketEmpty()) {
     return getBasketDishEmptyTemplate();
   } else {
+    const basketArray = getBasketAsArray();
     for (let indexBasket = 0; indexBasket < basketArray.length; indexBasket++) {
       const dishId = basketArray[indexBasket][0];
       const dishAmount = basketArray[indexBasket][1];
@@ -108,10 +111,12 @@ function getBasketDishesHtml(basket) {
 
 /** returns the basket price html string whether basket its empty or not */
 function getBasketPriceHtml(basket) {
-  if (Object.keys(basket).length === 0) {
+  if (isBasketEmpty()) {
     return getBasketPriceEmptyTemplate();
   } else {
-    return getBasketPriceTemplate(basket);
+    const subTotal = calculateBasketSubTotal();
+    const total = calculateBasketTotal();
+    return getBasketPriceTemplate(subTotal, total);
   }
 }
 /** create an basket dish object with the information what the basket needs */

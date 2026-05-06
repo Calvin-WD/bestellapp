@@ -1,6 +1,8 @@
 import {
   BASKET_ADD_AMOUNT,
   BASKET_ADD_ITEM,
+  BASKET_BUY_NOW,
+  BASKET_DELIVERY_FEE,
   BASKET_REMOVE_ITEM,
   BASKET_SUB_AMOUNT,
 } from "./constants.js";
@@ -37,10 +39,11 @@ export function getDishTemplate(dish, buttonText, buttonClass, buttonState) {
 }
 
 export function getBasketTemplate(
-  basket,
+  basketTotal,
   basketDishesHtml,
   basketPriceHtml,
   scrollClass,
+  buttonDnone,
 ) {
   return `<article class="basket">
         <header>
@@ -55,7 +58,7 @@ export function getBasketTemplate(
           </section>
         </main>
         <footer class="basket__footer">
-        ${getBuyButtonTemplate(basket)}
+        ${getBuyButtonTemplate(basketTotal, buttonDnone)}
         </footer>
       </article>`;
 }
@@ -98,19 +101,19 @@ export function getBasketDishTemplate(
           </div>`;
 }
 
-export function getBasketPriceTemplate(basket) {
+export function getBasketPriceTemplate(subTotal, total) {
   return `<table class="basket__table">
             <tr>
               <td>Subtotal</td>
-              <td id="subTotal-id">${basket}€</td>
+              <td id="subTotal-id">${subTotal.toFixed(2)}€</td>
             </tr>
             <tr class="basket__table--padBottom">
               <td>Delivery Fee</td>
-              <td>${basket}€</td>
+              <td>${BASKET_DELIVERY_FEE}€</td>
             </tr>
             <tr>
               <th>Total</th>
-              <th id="total-id">${basket}€</th>
+              <th id="total-id">${total.toFixed(2)}€</th>
             </tr>
           </table>`;
 }
@@ -133,13 +136,13 @@ function getAddToBasketButtonTemplate(
           </button>`;
 }
 
-function getBuyButtonTemplate(basket) {
+function getBuyButtonTemplate(total, buttonDnone) {
   return `<button
           id="buyNowButton-id"
           type="button"
-          class="button button--buyNow"
-          onclick="buyNow()">
-            Buy now (${basket}€)
+          class="button button--buyNow${buttonDnone}"
+          data-action="${BASKET_BUY_NOW}">
+            Buy now (${total.toFixed(2)}€)
           </button>`;
 }
 
