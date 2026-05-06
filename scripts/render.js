@@ -1,10 +1,13 @@
+import { getDishById } from "./db.js";
 import {
   getCategoryTemplate,
   getDishTemplate,
   getBasketTemplate,
   getBasketDishEmptyTemplate,
   getBasketPriceEmptyTemplate,
-} from "./template.js";
+  getBasketDishTemplate,
+  getBasketPriceTemplate,
+} from "./templates.js";
 
 /** Renders the cateories section by setting the full html into the DOM */
 export function renderCategories(menu) {
@@ -60,7 +63,7 @@ export function renderBasket(basket) {
 }
 
 function getBasketWrapperHtml(basket) {
-  const scrollClass = basket.length > 3 ? "oFlowYscroll" : "";
+  const scrollClass = Object.keys(basket).length > 3 ? "oFlowYscroll" : "";
 
   return getBasketTemplate(
     basket,
@@ -70,23 +73,26 @@ function getBasketWrapperHtml(basket) {
   );
 }
 
-function getBasketDishesHtml(basketDishes) {
+function getBasketDishesHtml(basket) {
   let basketDishesFullHtml = "";
+  const basketArray = Object.entries(basket);
 
-  if (basketDishes.length == 0) {
+  if (basketArray.length === 0) {
     return getBasketDishEmptyTemplate();
   } else {
-    for (
-      let indexBasketDish = 0;
-      indexBasketDish < basketDishes.length;
-      indexBasketDish++
-    ) {
-      const currentBasketDish = basketDishes[indexBasketDish];
-      const deleteButtonUpper = currentBasketDish.amount <= 1 ? "dNone" : "";
-      const deleteButtonLower = currentBasketDish.amount > 1 ? "dNone" : "";
-      const quantitySubButton = currentBasketDish.amount <= 1 ? "dNone" : "";
+    for (let indexBasket = 0; indexBasket < basketArray.length; indexBasket++) {
+      const dishId = basketArray[indexBasket][0];
+      const dishAmount = basketArray[indexBasket][1];
+      const dish = getDishById(dishId);
+
+      const basketDish = createBaskteDish(dish, dishAmount);
+
+      const deleteButtonUpper = basketDish.amount <= 1 ? "dNone" : "";
+      const deleteButtonLower = basketDish.amount > 1 ? "dNone" : "";
+      const quantitySubButton = basketDish.amount <= 1 ? "dNone" : "";
+
       basketDishesFullHtml += getBasketDishTemplate(
-        currentBasketDish,
+        basketDish,
         deleteButtonUpper,
         deleteButtonLower,
         quantitySubButton,
@@ -97,9 +103,19 @@ function getBasketDishesHtml(basketDishes) {
 }
 
 function getBasketPriceHtml(basket) {
-  if (basket.length == 0) {
+  if (Object.keys(basket).length === 0) {
     return getBasketPriceEmptyTemplate();
   } else {
     return getBasketPriceTemplate(basket);
   }
+}
+
+function createBaskteDish(dish, dishAmount) {
+  let basketDish = {
+    name: dish.name,
+    price: dish.price,
+    id: dish.id,
+    amount: dishAmount,
+  };
+  return basketDish;
 }
