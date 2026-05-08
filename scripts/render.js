@@ -53,13 +53,15 @@ export function renderBasket(basket) {
 export function openBasket() {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
-  basketWrapperRef.classList.remove("dNone");
+  basketWrapperRef.classList.remove("basket__close");
+  basketWrapperRef.classList.add("basket__open");
 }
 
 export function closeBasket() {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
-  basketWrapperRef.classList.add("dNone");
+  basketWrapperRef.classList.remove("basket__open");
+  basketWrapperRef.classList.add("basket__close");
 }
 
 /** Generate the html string for an array of dishes.

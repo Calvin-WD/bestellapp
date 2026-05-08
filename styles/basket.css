@@ -5,7 +5,7 @@
   align-items: center;
 
   position: sticky;
-  top: calc((100dvh - 800px) / 2);
+  top: 80px;
 
   max-height: 800px;
   width: 350px;
@@ -135,4 +135,22 @@
 
 .basket__footer {
   display: flex;
+}
+
+.basket__close {
+  animation: closeBasket 255ms ease-in-out forwards;
+}
+
+.basket__open {
+  animation: openBasket 255ms ease-in-out forwards;
+}
+
+@keyframes closeBasket {
+  from {transform: translateX(0);}
+  to {transform: translateX(360px);}
+}
+
+@keyframes openBasket {
+  from {transform: translateX(360px);}
+  to {transform: translateX(0);}
 }
