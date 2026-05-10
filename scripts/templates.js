@@ -45,7 +45,9 @@ export function getBasketTemplate(
   scrollClass,
   buttonDnone,
 ) {
-  return `<article class="basket">
+  return `<article
+        id="basket-id"
+        class="basket">
         <header>
           <h2>Your Basket</h2>
         </header>

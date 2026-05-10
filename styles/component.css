@@ -55,6 +55,10 @@
   transform: translateY(2px);
 }
 
+.quantityBtn--close {
+  background-color: var(--color-black);
+}
+
 .quantityBtn svg {
   display: block;
   height: 18px;
@@ -66,4 +70,67 @@
   cursor: pointer;
 
   color: var(--color-orange-dark);
+}
+
+.dialog:open {
+  position: absolute;
+  top: calc((100dvh - 235px) / 2);
+  left: calc(50% - 200px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1.5rem;
+
+  height: 270px;
+  width: 400px;
+
+  background-color: var(--color-black);
+  color: var(--color-orange-bright);
+
+  border: none;
+  border-radius: 30px;
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+}
+
+.dialog img {
+  height: 48px;
+  /* width: 80px; */
+}
+
+.dialog__carRideKeyFr{
+  animation: carRide 2500ms ease-in-out forwards;
+  animation-delay: 0ms;
+}
+
+.dialog__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog__textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog__textBox > strong {
+  font-size: 2.5rem;
+}
+
+.dialog__textBox > p {
+  font-size: 1.5rem;
+}
+
+@keyframes carRide {
+  0% {transform: translateX(-150px) rotate(0);}
+  100% {transform: translateX(150px) rotate(-15deg);}
 }

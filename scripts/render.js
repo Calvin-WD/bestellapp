@@ -17,6 +17,8 @@ import {
   getBasketPriceTemplate,
 } from "./templates.js";
 
+let timeOutId = 0;
+
 /** Renders the cateories section by setting the full html into the DOM */
 export function renderCategories(menu) {
   const catWrapperRef = document.getElementById("catWrapper-id");
@@ -51,17 +53,31 @@ export function renderBasket(basket) {
 }
 
 export function openBasket() {
-  const basketWrapperRef = document.getElementById("basketWrapper-id");
+  const basketRef = document.getElementById("basket-id");
 
-  basketWrapperRef.classList.remove("basket__close");
-  basketWrapperRef.classList.add("basket__open");
+  basketRef.classList.remove("basket__close");
+  basketRef.classList.add("basket__open");
 }
 
 export function closeBasket() {
-  const basketWrapperRef = document.getElementById("basketWrapper-id");
+  const basketRef = document.getElementById("basket-id");
 
-  basketWrapperRef.classList.remove("basket__open");
-  basketWrapperRef.classList.add("basket__close");
+  basketRef.classList.remove("basket__open");
+  basketRef.classList.add("basket__close");
+}
+
+export function openDialog() {
+  const dialogRef = document.getElementById("dialog-id");
+
+  dialogRef.showModal();
+  timeOutId = setTimeout(closeDialog, 4000);
+}
+
+export function closeDialog() {
+  const dialogRef = document.getElementById("dialog-id");
+
+  dialogRef.close();
+  clearTimeout(timeOutId);
 }
 
 /** Generate the html string for an array of dishes.

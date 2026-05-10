@@ -5,3 +5,4 @@ export const BASKET_ADD_AMOUNT = "BASKET_ADD_AMOUNT";
 export const BASKET_SUB_AMOUNT = "BASKET_SUB_AMOUNT";
 export const BASKET_BUY_NOW = "BASKET_BUY_NOW";
 export const BASKET_DELIVERY_FEE = 4.99;
+export const DIALOG_CLOSE = "DIALOG_CLOSE";

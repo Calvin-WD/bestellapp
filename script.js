@@ -10,7 +10,9 @@ import {
 } from "./scripts/basket.js";
 import {
   closeBasket,
+  closeDialog,
   openBasket,
+  openDialog,
   renderBasket,
   renderCategories,
 } from "./scripts/render.js";
@@ -21,6 +23,7 @@ import {
   BASKET_BUY_NOW,
   BASKET_REMOVE_ITEM,
   BASKET_SUB_AMOUNT,
+  DIALOG_CLOSE,
 } from "./scripts/constants.js";
 import { saveToLocalStorage } from "./scripts/store.js";
 
@@ -75,6 +78,9 @@ function handleClick(event) {
     clearBasket();
     saveToLocalStorage(BASKET, basket);
     renderCategories(MENU);
-    renderBasket();
+    closeBasket();
+    openDialog();
+  } else if (action === DIALOG_CLOSE) {
+    closeDialog();
   }
 }
