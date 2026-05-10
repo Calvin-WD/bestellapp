@@ -168,32 +168,9 @@
 
   color: white;
   background-color: var(--color-orange-dark);
-}
 
-.category__header::before {
-  position: absolute;
-  top: 0;
-  right: 100%;
-
-  content: "";
-
-  height: 100%;
-  width: 100vw;
-
-  background-color: var(--color-orange-dark);
-}
-
-.category__header::after {
-  position: absolute;
-  top: 0;
-  left: 100%;
-
-  content: "";
-
-  height: 100%;
-  width: 100vw;
-
-  background-color: var(--color-orange-dark);
+  box-shadow: 0 0 0 100vmax var(--color-orange-dark);
+  clip-path: inset(0 -100vmax);
 }
 
 .category__main {
@@ -310,4 +287,3 @@
   overflow-y: scroll;
 }
 /* Common Styles END*/
-

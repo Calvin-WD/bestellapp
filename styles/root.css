@@ -38,8 +38,6 @@ body {
   flex-direction: column;
 
   min-height: 100dvh;
-
-  overflow-x: hidden;
 }
 
 h1 {
