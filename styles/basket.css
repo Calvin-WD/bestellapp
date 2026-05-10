@@ -138,19 +138,9 @@
 }
 
 .basket__close {
-  animation: closeBasket 255ms ease-in-out forwards;
+  display: none;
 }
 
 .basket__open {
-  animation: openBasket 255ms ease-in-out forwards;
-}
-
-@keyframes closeBasket {
-  from {transform: translateX(0);}
-  to {transform: translateX(360px);}
-}
-
-@keyframes openBasket {
-  from {transform: translateX(360px);}
-  to {transform: translateX(0);}
+  display: flex;
 }
