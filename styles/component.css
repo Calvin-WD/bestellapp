@@ -130,6 +130,15 @@
   font-size: 1.5rem;
 }
 
+.navBtn {
+  display: flex;
+
+  padding: 0;
+
+  background-color: var(--color-black);
+  border: none;
+}
+
 @keyframes carRide {
   0% {transform: translateX(-150px) rotate(0);}
   100% {transform: translateX(150px) rotate(-15deg);}

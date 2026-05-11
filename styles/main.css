@@ -275,15 +275,27 @@
   color: white;
 }
 /* Footer Styles END */
-/* NavBar */
-.navBar {
-  display: flex;
+/* mobileNavBar */
+.mobileNavBar {
+  display: none;
 
   height: 80px;
 
   background-color: var(--color-black);
 }
-/* NavBar END */
+
+.mobileNavBar > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 100%;
+}
+
+.mobileNavBar li {
+  display: flex;
+}
+/* mobileNavBar END */
 
 /* Common Styles*/
 .dNone {

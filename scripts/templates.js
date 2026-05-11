@@ -24,7 +24,9 @@ export function getCategoryTemplate(indexCat, nameCat, dishesHtml) {
 /** Returns the html for the dish */
 export function getDishTemplate(dish, buttonText, buttonClass, buttonState) {
   return `<article id="dish-${dish.id}" class="dish">
-      <img id="dishImage-${dish.id}" class="dish__image" src="${dish.image}" alt="Burger-${dish.id}">
+      <div class="dish__imageContainer">
+        <img id="dishImage-${dish.id}" class="dish__image" src="${dish.image}" alt="Burger-${dish.id}">
+      </div>
       <div id="dishDescription-${dish.id}" class="dish__descriptionContainer">
         <div class="dish__description">
           <h3>${dish.name}</h3>
