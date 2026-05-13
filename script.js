@@ -12,9 +12,12 @@ import {
   closeBasket,
   closeDialog,
   openBasket,
+  openMobileBasketToggle,
+  closeMobileBasket,
   openDialog,
   renderBasket,
   renderCategories,
+  renderMobileBasket,
 } from "./scripts/render.js";
 import {
   BASKET,
@@ -24,6 +27,7 @@ import {
   BASKET_REMOVE_ITEM,
   BASKET_SUB_AMOUNT,
   DIALOG_CLOSE,
+  MOBILE_OPEN_BASKET,
 } from "./scripts/constants.js";
 import { saveToLocalStorage } from "./scripts/store.js";
 
@@ -33,10 +37,14 @@ const MENU = getMenu();
 let basket = getBasket();
 
 function init() {
+  renderAll();
+  setEventListeners();
+}
+
+function renderAll() {
   renderCategories(MENU);
   renderBasket(basket);
-
-  setEventListeners();
+  renderMobileBasket(basket);
 }
 
 function setEventListeners() {
@@ -56,29 +64,32 @@ function handleClick(event) {
   if (action === BASKET_ADD_ITEM) {
     addToBasket(Number(dishId));
     saveToLocalStorage(BASKET, basket);
-    renderCategories(MENU);
-    renderBasket(basket);
-    if (getBasketLength() <= 1){
+    renderAll();
+    if (getBasketLength() <= 1) {
       openBasket();
     }
   } else if (action === BASKET_REMOVE_ITEM) {
     removeFromBasket(Number(dishId));
     saveToLocalStorage(BASKET, basket);
-    renderCategories(MENU);
-    renderBasket(basket);
+    renderAll();
   } else if (action === BASKET_ADD_AMOUNT) {
     addDishAmount(Number(dishId));
     saveToLocalStorage(BASKET, basket);
     renderBasket(basket);
+    renderMobileBasket(basket);
   } else if (action === BASKET_SUB_AMOUNT) {
     subDishAmount(Number(dishId));
     saveToLocalStorage(BASKET, basket);
     renderBasket(basket);
+    renderMobileBasket(basket);
+  } else if (action === MOBILE_OPEN_BASKET) {
+    openMobileBasketToggle();
   } else if (action === BASKET_BUY_NOW) {
     clearBasket();
     saveToLocalStorage(BASKET, basket);
     renderCategories(MENU);
     closeBasket();
+    closeMobileBasket(basket);
     openDialog();
   } else if (action === DIALOG_CLOSE) {
     closeDialog();

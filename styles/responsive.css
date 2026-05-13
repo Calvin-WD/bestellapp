@@ -1,5 +1,5 @@
 /* RESPONSIV Desktop */
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1278px) {
   /* Global */
   h2 {
     font-size: 2rem;
@@ -26,6 +26,11 @@
     font-size: 1rem;
   }
 
+  .quantityBtn svg {
+    height: 16px;
+    width: 14px;
+  }
+
   .dish__price > p {
     font-size: 1.25rem;
     font-weight: 700;
@@ -42,9 +47,26 @@
   }
   /* Global END */
   /* Content */
+  #burger-menu-id {
+    display: none;
+  }
+
   .content__basketWrapper {
     display: none;
   }
+
+  .basket {
+    padding: 2rem 8rem;
+  }
+
+  .basketMobile {
+    display: flex;
+  }
+
+  .basketMobile ::-webkit-scrollbar {
+    display: flex;
+  }
+
   /* Content END */
   /* Footer */
   .footer {
@@ -53,25 +75,15 @@
     padding-top: 1rem;
     padding-bottom: 6rem;
   }
-  
+
   .mobileNavBar {
     display: flex;
-    
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    
-    width: 100%;
   }
   /* Footer END */
 }
 
 @media screen and (max-width: 768px) {
   /* Global */
-  /* ::-webkit-scrollbar {
-    display: none;
-  } */
-
   h1 {
     font-size: 2rem;
   }
@@ -80,18 +92,23 @@
     font-size: 1.75rem;
   }
   /* Global END */
-  /* Content */
-  #burger-menu-id {
-    display: none;
+  /* Header */
+  .header {
+    height: 80px;
   }
 
+  .header img {
+    height: 30px;
+  }
+  /* Header END */
+  /* Content */
   .hero {
     padding-bottom: 3rem;
     gap: 5rem;
   }
 
   .hero__logo {
-    top: 320px;
+    top: 300px;
     left: max(50% - 80px, 2rem);
 
     height: 160px;
@@ -123,14 +140,42 @@
   .dish__image {
     width: 100%;
   }
+
+  .basket {
+    padding: 2rem 5rem;
+  }
+
+  .dialog:open {
+    top: calc((100dvh - 200px) / 2);
+    left: calc(50% - 150px);
+
+    height: 200px;
+    width: 300px;
+  }
+
+  .dialog img {
+    height: 32px;
+  }
+
+  .dialog__textBox > strong {
+    font-size: 2rem;
+  }
+
+  .dialog__textBox > p {
+    font-size: 1rem;
+  }
+
+  @keyframes carRide {
+    0% {
+      transform: translateX(-100px) rotate(0);
+    }
+    100% {
+      transform: translateX(100px) rotate(-15deg);
+    }
+  }
+
   /* Content END */
   /* Footer */
-  /* .footer {
-    height: auto;
-
-    padding-top: 1rem;
-    padding-bottom: 6rem;
-  } */
 
   .footer__innerContainer {
     flex-direction: column-reverse;
@@ -143,21 +188,24 @@
     flex-direction: column;
     gap: 0;
   }
-
-  /* .mobileNavBar {
-    display: flex;
-
-    position: fixed;
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-  } */
   /* Footer END */
 }
 
 @media screen and (max-width: 480px) {
+  /* Header */
+  .header {
+    height: 72px;
+  }
+
+  .header img {
+    height: 24px;
+  }
+  /* Header END */
   /* Content */
+  .hero__logo {
+    top: 292px;
+  }
+  
   .dish__descriptionContainer {
     flex-direction: column;
     gap: 1rem;
@@ -166,6 +214,29 @@
   .dish__price {
     flex-direction: row;
   }
+
+  .basket {
+    padding: 2rem 3rem;
+  }
+  
+  .basketMobile {
+    padding-bottom: 72px;
+    transform: translateY(calc(100dvh - 72px));
+  }
+  
+  .basketMobile__open {
+    transform: translateY(0);
+  }
   /* Content END */
+  /* Footer */
+  .mobileNavBar {
+    height: 72px;
+  }
+
+  .navBtn svg {
+    height: 18px;
+  width: 20px;
+  }
+  /* Footer END */
 }
 /* RESPONSIVE Mobile END*/

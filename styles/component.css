@@ -7,13 +7,12 @@
   background-color: white;
 
   color: rgba(54, 53, 52, 1);
-  font-size:  1rem;
+  font-size: 1rem;
   font-weight: 600;
 
   text-wrap: nowrap;
 
   cursor: pointer;
-
 }
 
 .button--buyNow {
@@ -29,7 +28,8 @@
   background-color: var(--color-orange-bright);
 }
 
-.button--added, .button:hover {
+.button--added,
+.button:hover {
   color: var(--color-orange-dark);
 }
 
@@ -47,7 +47,7 @@
   color: var(--color-black);
   font-size: 1.25rem;
   font-weight: 700;
-  
+
   line-height: 1;
 }
 
@@ -63,7 +63,6 @@
   display: block;
   height: 18px;
   width: 16px;
-
 }
 
 .quantityBtn:hover {
@@ -102,10 +101,9 @@
 
 .dialog img {
   height: 48px;
-  /* width: 80px; */
 }
 
-.dialog__carRideKeyFr{
+.dialog__carRideKeyFr {
   animation: carRide 2500ms ease-in-out forwards;
   animation-delay: 0ms;
 }
@@ -135,11 +133,28 @@
 
   padding: 0;
 
+  color: white;
   background-color: var(--color-black);
   border: none;
 }
 
+.navBtn svg {
+  display: block;
+  height: 22px;
+  width: 24px;
+}
+
+.navBtn:hover {
+  cursor: pointer;
+
+  color: var(--color-orange-dark);
+}
+
 @keyframes carRide {
-  0% {transform: translateX(-150px) rotate(0);}
-  100% {transform: translateX(150px) rotate(-15deg);}
+  0% {
+    transform: translateX(-150px) rotate(0);
+  }
+  100% {
+    transform: translateX(150px) rotate(-15deg);
+  }
 }

@@ -112,36 +112,6 @@ export const MENU = {
       ],
     },
   ],
-  side: [
-    {
-      name: "Pommes Frites",
-      price: 4.5,
-      description: "Potato sticks, sea salt, ketchup",
-      id: 12,
-      amount: 0,
-    },
-    {
-      name: "Süßkartoffel-Pommes",
-      price: 5.5,
-      description: "Sweet potatoes, sea salt, sour cream dip",
-      id: 13,
-      amount: 0,
-    },
-    {
-      name: "Onion Rings",
-      price: 5.0,
-      description: "Fried onion rings in beer batter",
-      id: 14,
-      amount: 0,
-    },
-    {
-      name: "Knoblauchbrot",
-      price: 4.0,
-      description: "Toasted ciabatta, garlic butter",
-      id: 15,
-      amount: 0,
-    },
-  ],
 };
 
 export function getMenu() {

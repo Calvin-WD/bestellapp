@@ -47,9 +47,17 @@ export function renderBasket(basket) {
 
   basketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
 
-  if (isBasketEmpty()) {
-    closeBasket();
-  }
+  // if (isBasketEmpty()) {
+  //   closeBasket();
+  // }
+}
+
+export function renderMobileBasket(basket) {
+  const mobileBasketWrapperRef = document.getElementById(
+    "mobileBasketWrapper-id",
+  );
+
+  mobileBasketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
 }
 
 export function openBasket() {
@@ -71,6 +79,19 @@ export function openDialog() {
 
   dialogRef.showModal();
   timeOutId = setTimeout(closeDialog, 4000);
+}
+
+export function openMobileBasketToggle() {
+  const mobileBasketRef = document.getElementById("mobileBasketWrapper-id");
+
+  mobileBasketRef.classList.toggle("basketMobile__open");
+}
+
+export function closeMobileBasket(basket) {
+  const mobileBasketRef = document.getElementById("mobileBasketWrapper-id");
+
+  mobileBasketRef.classList.remove("basketMobile__open");
+  renderMobileBasket(basket);
 }
 
 export function closeDialog() {
