@@ -19,13 +19,13 @@ import {
 
 let timeOutId = 0;
 
-/** Renders the cateories section by setting the full html into the DOM */
+/** Renders the categories section by inserting the generated HTML into the DOM */
 export function renderCategories(menu) {
   const catWrapperRef = document.getElementById("catWrapper-id");
   catWrapperRef.innerHTML = getCatWrapperHtml(menu);
 }
 
-/** Returns the complete html with all the categories and their dishes */
+/** Generates the complete HTML string for all categories and their dishes */
 function getCatWrapperHtml(menu) {
   let catWrapperHtmlString = "";
 
@@ -42,16 +42,14 @@ function getCatWrapperHtml(menu) {
   return catWrapperHtmlString;
 }
 
+/** Renders the desktop basket into the DOM */
 export function renderBasket(basket) {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
   basketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
-
-  // if (isBasketEmpty()) {
-  //   closeBasket();
-  // }
 }
 
+/** Renders the mobile basket into the DOM */
 export function renderMobileBasket(basket) {
   const mobileBasketWrapperRef = document.getElementById(
     "mobileBasketWrapper-id",
@@ -60,6 +58,7 @@ export function renderMobileBasket(basket) {
   mobileBasketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
 }
 
+/** Opens the desktop basket by adjusting CSS classes */
 export function openBasket() {
   const basketRef = document.getElementById("basket-id");
 
@@ -67,6 +66,7 @@ export function openBasket() {
   basketRef.classList.add("basket__open");
 }
 
+/** Closes the desktop basket by adjusting CSS classes */
 export function closeBasket() {
   const basketRef = document.getElementById("basket-id");
 
@@ -74,6 +74,7 @@ export function closeBasket() {
   basketRef.classList.add("basket__close");
 }
 
+/** Opens the order dialog and automatically closes it after 4 seconds */
 export function openDialog() {
   const dialogRef = document.getElementById("dialog-id");
 
@@ -81,12 +82,14 @@ export function openDialog() {
   timeOutId = setTimeout(closeDialog, 4000);
 }
 
+/** Toggles the visibility (open/close) of the mobile basket */
 export function openMobileBasketToggle() {
   const mobileBasketRef = document.getElementById("mobileBasketWrapper-id");
 
   mobileBasketRef.classList.toggle("basketMobile__open");
 }
 
+/** Closes the mobile basket and updates its content */
 export function closeMobileBasket(basket) {
   const mobileBasketRef = document.getElementById("mobileBasketWrapper-id");
 
@@ -94,6 +97,7 @@ export function closeMobileBasket(basket) {
   renderMobileBasket(basket);
 }
 
+/** Closes the order dialog (modal) and clears the running timeout */
 export function closeDialog() {
   const dialogRef = document.getElementById("dialog-id");
 
@@ -125,6 +129,7 @@ function getDishesHtml(dishes) {
   return dishesHtml;
 }
 
+/** Generates the wrapping HTML string for the basket including dynamic classes */
 function getBasketWrapperHtml(basket) {
   const scrollClass = getBasketLength() > 3 ? "oFlowYscroll" : "";
   const basketTotal = calculateBasketTotal();

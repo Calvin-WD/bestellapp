@@ -114,10 +114,12 @@ export const MENU = {
   ],
 };
 
+/** Returns the complete menu */
 export function getMenu() {
   return MENU;
 }
 
+/** Finds a dish by its id */
 export function getDishById(dishId) {
   let dish = {};
   for (let indexCat = 0; indexCat < MENU.categories.length; indexCat++) {
@@ -130,6 +132,7 @@ export function getDishById(dishId) {
   }
 }
 
+/** Gets the price of a dish by its id */
 export function getDishPriceById(dishId) {
   let dish = getDishById(dishId);
   return dish.price;

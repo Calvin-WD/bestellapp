@@ -7,7 +7,7 @@ import {
   BASKET_SUB_AMOUNT,
 } from "./constants.js";
 
-/** Returns the html of the categories framework.
+/** Generates the html of the categories wrapper.
  * Is ready to add the html for the dishes.
  */
 export function getCategoryTemplate(indexCat, nameCat, dishesHtml) {
@@ -21,7 +21,7 @@ export function getCategoryTemplate(indexCat, nameCat, dishesHtml) {
     </article>`;
 }
 
-/** Returns the html for the dish */
+/** Generates the html for a single dish */
 export function getDishTemplate(dish, buttonText, buttonClass, buttonState) {
   return `<article id="dish-${dish.id}" class="dish">
       <div class="dish__imageContainer">
@@ -40,6 +40,7 @@ export function getDishTemplate(dish, buttonText, buttonClass, buttonState) {
     </article>`;
 }
 
+/** Generates the basic HTML wrapper of the basket */
 export function getBasketTemplate(
   basketTotal,
   basketDishesHtml,
@@ -67,6 +68,7 @@ export function getBasketTemplate(
       </article>`;
 }
 
+/** Generates the HTML template for an empty basket */
 export function getBasketDishEmptyTemplate() {
   return `<div class="basket_emptyDishesContainer">
             <p>Nothing here yet.</p>
@@ -74,6 +76,7 @@ export function getBasketDishEmptyTemplate() {
           </div>`;
 }
 
+/** Generates the HTML template for the image inside an empty basket */
 export function getBasketPriceEmptyTemplate() {
   return `<img
           src="./assets/icon/shopping_cart.svg"
@@ -82,6 +85,7 @@ export function getBasketPriceEmptyTemplate() {
         />`;
 }
 
+/** Generates the HTML template for a single dish item within the basket */
 export function getBasketDishTemplate(
   basketDish,
   deleteButtonUpper,
@@ -105,6 +109,7 @@ export function getBasketDishTemplate(
           </div>`;
 }
 
+/** Generates the HTML template for the price in the basket */
 export function getBasketPriceTemplate(subTotal, total) {
   return `<table class="basket__table">
             <tr>
@@ -122,7 +127,7 @@ export function getBasketPriceTemplate(subTotal, total) {
           </table>`;
 }
 
-/** Returns the html for the button for adding the dish to the basket. */
+/** Generates the HTML template for the button to add a dish to the basket */
 function getAddToBasketButtonTemplate(
   dish,
   buttonText,
@@ -140,6 +145,7 @@ function getAddToBasketButtonTemplate(
           </button>`;
 }
 
+/** Generates the HTML template for the final "Buy now" button */
 function getBuyButtonTemplate(total, buttonDnone) {
   return `<button
           id="buyNowButton-id"
@@ -150,6 +156,7 @@ function getBuyButtonTemplate(total, buttonDnone) {
           </button>`;
 }
 
+/** Generates the HTML template for the delete button in the basket */
 function getDeleteButtonTemplate(dish, deleteButtonUpper, deleteButtonLower) {
   return `<button
           type="button"
@@ -165,6 +172,7 @@ function getDeleteButtonTemplate(dish, deleteButtonUpper, deleteButtonLower) {
          </button>`;
 }
 
+/** Generates the HTML template for the plus quanitity button in the basket */
 function getQuantityAdditionButtonTemplate(dish) {
   return `<button
             type="button"
@@ -175,6 +183,7 @@ function getQuantityAdditionButtonTemplate(dish) {
           </button>`;
 }
 
+/** Generates the HTML template for the minus quanitity button in the basket */
 function getQuantitySubtractionButtonTemplate(dish, quantitySubButton) {
   return `<button
             id="subButton-${dish.id}"

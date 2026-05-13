@@ -47,10 +47,12 @@ function renderAll() {
   renderMobileBasket(basket);
 }
 
+/** Registers global event listeners */
 function setEventListeners() {
   document.body.addEventListener("click", handleClick);
 }
 
+/** Handles all click events based on 'data-action' attributes */
 function handleClick(event) {
   const target = event.target.closest("[data-action]");
 
