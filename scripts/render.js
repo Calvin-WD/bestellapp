@@ -6,6 +6,7 @@ import {
   isBasketEmpty,
   isDishInBasket,
 } from "./basket.js";
+import { BASKET_DESKTOP_PREFIX, BASKET_MOBILE_PREFIX } from "./constants.js";
 import { getDishById } from "./db.js";
 import {
   getCategoryTemplate,
@@ -46,7 +47,7 @@ function getCatWrapperHtml(menu) {
 export function renderBasket(basket) {
   const basketWrapperRef = document.getElementById("basketWrapper-id");
 
-  basketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
+  basketWrapperRef.innerHTML = getBasketWrapperHtml(basket, BASKET_DESKTOP_PREFIX);
 }
 
 /** Renders the mobile basket into the DOM */
@@ -55,12 +56,12 @@ export function renderMobileBasket(basket) {
     "mobileBasketWrapper-id",
   );
 
-  mobileBasketWrapperRef.innerHTML = getBasketWrapperHtml(basket);
+  mobileBasketWrapperRef.innerHTML = getBasketWrapperHtml(basket, BASKET_MOBILE_PREFIX);
 }
 
 /** Opens the desktop basket by adjusting CSS classes */
 export function openBasket() {
-  const basketRef = document.getElementById("basket-id");
+  const basketRef = document.getElementById(BASKET_DESKTOP_PREFIX + "-basket-id");
 
   basketRef.classList.remove("basket__close");
   basketRef.classList.add("basket__open");
@@ -68,7 +69,7 @@ export function openBasket() {
 
 /** Closes the desktop basket by adjusting CSS classes */
 export function closeBasket() {
-  const basketRef = document.getElementById("basket-id");
+  const basketRef = document.getElementById(BASKET_DESKTOP_PREFIX + "-basket-id");
 
   basketRef.classList.remove("basket__open");
   basketRef.classList.add("basket__close");
@@ -130,12 +131,13 @@ function getDishesHtml(dishes) {
 }
 
 /** Generates the wrapping HTML string for the basket including dynamic classes */
-function getBasketWrapperHtml(basket) {
+function getBasketWrapperHtml(basket, basketIdPrefix) {
   const scrollClass = getBasketLength() > 3 ? "oFlowYscroll" : "";
   const basketTotal = calculateBasketTotal();
   const buyButtonClassDnone = isBasketEmpty() ? " dNone" : "";
 
   return getBasketTemplate(
+    basketIdPrefix,
     basketTotal,
     getBasketDishesHtml(basket),
     getBasketPriceHtml(basket),

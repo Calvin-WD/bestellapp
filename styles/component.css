@@ -57,6 +57,7 @@
 
 .quantityBtn--close {
   background-color: var(--color-black);
+  color: var(--color-orange-bright);
 }
 
 .quantityBtn svg {

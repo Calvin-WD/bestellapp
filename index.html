@@ -18,13 +18,13 @@
       <div class="header__imgContainer">
         <img
           src="./assets/icon/header-logo.svg"
-          alt="Bestelllogo"
+          alt="Order icon"
           class="header__img"
         />
         <img
           id="burger-menu-id"
           src="./assets/icon/header-menu.svg"
-          alt="Burgermenu ist ein reiner Platzhalter"
+          alt="Just a Placeholder"
           class="header__img"
         />
       </div>
@@ -34,7 +34,7 @@
         <img
           class="hero__logo"
           src="./assets/img/hero-logo.png"
-          alt="Burgerhouse Logo"
+          alt="Burgerhouse icon"
         />
       </div>
       <section class="hero">
@@ -42,7 +42,7 @@
           <img
             class="hero__image"
             src="./assets/img/hero-image.png"
-            alt="Burger und Pizza auf einem Tisch"
+            alt="Burger and Pizza on a Table"
           />
         </div>
         <div class="hero__title">
@@ -65,14 +65,15 @@
       </section>
       <section class="content">
         <section id="catWrapper-id" class="content__catWrapper"></section>
-        <aside id="basketWrapper-id" class="content__basketWrapper"></aside>
-        <aside id="mobileBasketWrapper-id" class="basketMobile">
+        <aside id="basketWrapper-id" class="content__basketWrapper" role="presentation" aria-label="The Basket Wrapper"></aside>
+        <aside id="mobileBasketWrapper-id" class="basketMobile" role="presentation" aria-label="The Mobile Basket Wrapper">
         </aside>
         <dialog id="dialog-id" class="dialog">
           <header class="dialog__header">
             <button
               class="quantityBtn quantityBtn--close"
               data-action="DIALOG_CLOSE"
+              aria-label="close the dialog"
             >
               <svg
                 width="16"
@@ -83,12 +84,12 @@
               >
                 <path
                   d="M8 9.70342L2.03802 15.6654C1.81496 15.8885 1.53105 16 1.18631 16C0.841572 16 0.557668 15.8885 0.334601 15.6654C0.111534 15.4423 0 15.1584 0 14.8137C0 14.4689 0.111534 14.185 0.334601 13.962L6.29658 8L0.334601 2.03802C0.111534 1.81496 0 1.53105 0 1.18631C0 0.841572 0.111534 0.557668 0.334601 0.334601C0.557668 0.111534 0.841572 0 1.18631 0C1.53105 0 1.81496 0.111534 2.03802 0.334601L8 6.29658L13.962 0.334601C14.185 0.111534 14.4689 0 14.8137 0C15.1584 0 15.4423 0.111534 15.6654 0.334601C15.8885 0.557668 16 0.841572 16 1.18631C16 1.53105 15.8885 1.81496 15.6654 2.03802L9.70342 8L15.6654 13.962C15.8885 14.185 16 14.4689 16 14.8137C16 15.1584 15.8885 15.4423 15.6654 15.6654C15.4423 15.8885 15.1584 16 14.8137 16C14.4689 16 14.185 15.8885 13.962 15.6654L8 9.70342Z"
-                  fill="#FDEADC"
+                  fill="currentColor"
                 />
               </svg>
             </button>
           </header>
-          <main class="dialog__main">
+          <div class="dialog__main">
             <img
               class="dialog__carRideKeyFr"
               src="./assets/icon/ordered-car-icon.png"
@@ -98,7 +99,7 @@
               <strong>Order confirmed!</strong>
               <p>Your food is on the way!</p>
             </div>
-          </main>
+          </div>
         </dialog>
       </section>
     </main>
@@ -112,21 +113,21 @@
               aria-hidden="true" /></span
           >2026 BurgerHouse
         </p>
-        <nav>
+        <nav aria-label="Desktop Footer Menu">
           <ul class="footer__navList">
             <li>
-              <a href="./sites/impressum.html">Imprint</a>
+              <a href="./sites/impressum.html" aria-label="Link to Imprint">Imprint</a>
             </li>
             <li>
-              <a href="#">Cookie Preferences</a>
+              <a href="#" aria-label="Just a Placeholder">Cookie Preferences</a>
             </li>
           </ul>
         </nav>
       </div>
-      <nav id="navBar-id" class="mobileNavBar">
+      <nav id="navBar-id" class="mobileNavBar" aria-label="Mobile Navigation">
         <ul>
           <li>
-            <button class="navBtn">
+            <button class="navBtn" disabled>
               <svg
                 width="22"
                 height="24"
@@ -144,7 +145,7 @@
             </button>
           </li>
           <li>
-            <button class="navBtn">
+            <button class="navBtn" disabled>
               <svg
                 width="22"
                 height="24"
@@ -162,7 +163,7 @@
             </button>
           </li>
           <li>
-            <button class="navBtn">
+            <button class="navBtn" disabled>
               <svg
                 width="22"
                 height="24"
@@ -180,7 +181,7 @@
             </button>
           </li>
           <li>
-            <button class="navBtn" data-action="MOBILE_OPEN_BASKET">
+            <button class="navBtn" data-action="MOBILE_OPEN_BASKET" aria-label="Open Mobile Basket">
               <svg
                 width="22"
                 height="24"

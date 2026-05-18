@@ -225,7 +225,7 @@
   align-items: flex-end;
 }
 
-.dish__price > p {
+.dish__price--value {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -259,6 +259,9 @@
   align-items: center;
 
   gap: 0.5rem;
+
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .footer__copyright > span {
@@ -273,6 +276,8 @@
 
 .footer__navList a {
   color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 /* Footer Styles END */
 /* mobileNavBar */
