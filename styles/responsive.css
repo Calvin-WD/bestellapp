@@ -239,4 +239,39 @@
   }
   /* Footer END */
 }
+
+/* If height to small for desktop basket */
+@media screen and (max-height: 750px) {
+  #burger-menu-id {
+    display: none;
+  }
+  
+  .content__basketWrapper {
+    display: none;
+  }
+  
+  .basket {
+    padding: 2rem 8rem;
+  }
+  
+  .basketMobile {
+    display: flex;
+  }
+  
+  .basketMobile ::-webkit-scrollbar {
+    display: flex;
+  }
+  
+  .footer {
+    height: auto;
+    
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+  }
+  
+  .mobileNavBar {
+    display: flex;
+  }
+}
+/* If height to small for desktop basket END */
 /* RESPONSIVE Mobile END*/
